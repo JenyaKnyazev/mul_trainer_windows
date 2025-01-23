@@ -7,15 +7,20 @@
 
 HANDLE h,h2;
 COORD c;
-int digits,exersices,is_again;
+int digits,exersices,is_again,delay;
 clock_t start, end;
-void cleen_line(HANDLE h,COORD c);
-void one_exersice(int digits,HANDLE h, HANDLE h2);
-void print_results();
-void zero();
+extern void cleen_line(HANDLE h,COORD c);
+extern void one_exersice(int digits,HANDLE h, HANDLE h2,int seconds);
+extern void print_results();
+extern void zero();
 void run() {
 label:
 	zero();
+	printf("enter seconds to show exercise: ");
+	scanf("%d",&delay);
+	getchar();
+	cleen_line(h, c);
+	delay *= 1000;
 	printf("enter amount of digits: ");
 	scanf("%d", &digits);
 	getchar();
@@ -26,7 +31,7 @@ label:
 	cleen_line(h,c);
 	start = clock();
 	while (exersices--) {
-		one_exersice(digits,h, h2);
+		one_exersice(digits,h, h2,delay);
 	}
 	end = clock();
 	end -= start;

@@ -1,5 +1,6 @@
 SetConsoleCursorPosition proto
 ReadConsoleA proto
+Sleep proto
 puts proto
 rand proto
 printf proto
@@ -72,12 +73,12 @@ printf proto
 		mov rsi,r12
 		call gen_num
 		mov num2,r14
-		sub rsp,80
+		sub rsp,88
 		mov rcx,offset p
 		mov rdx,num1
 		mov r8,num2
 		call printf
-		add rsp,80
+		add rsp,88
 		mov rax,num1
 		mov rbx,num2
 		xor rdx,rdx
@@ -133,8 +134,21 @@ printf proto
 	one_exersice proc
 		push rdx
 		push r8
+		push r9
 		call print_exercise
 		pop rcx
+		sub rsp,32
+		call Sleep
+		add rsp,32
+		pop rdx
+		pop rcx
+		push rdx
+		push rcx
+		xor rdx,rdx
+		call cleen_line
+		pop rdx
+		pop rcx
+		push rdx
 		call input
 		call check
 		pop rcx
