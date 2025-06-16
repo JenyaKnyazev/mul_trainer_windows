@@ -38,6 +38,7 @@ printf proto
 		xor r14,r14
 		sub rsp,32
 		call rand
+		xor rdx,rdx
 		mov r15,9
 		div r15
 		inc dl
